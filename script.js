@@ -302,31 +302,31 @@
 
 // 11. Multiple Pointers Container With Most Water
 
-function maxArea(height) {
-  let left = 0;
-  let right = height.length - 1;
-  let result = 0;
+// function maxArea(height) {
+//   let left = 0;
+//   let right = height.length - 1;
+//   let result = 0;
 
-  while (left < right) {
-    let sum = Math.min(height[left], height[right]) * (right - left);
+//   while (left < right) {
+//     let sum = Math.min(height[left], height[right]) * (right - left);
 
-    if (result < sum) {
-      result = sum;
-    }
+//     if (result < sum) {
+//       result = sum;
+//     }
 
-    if (height[left] < height[right]) {
-      left++;
-    } else {
-      right--;
-    }
-  }
+//     if (height[left] < height[right]) {
+//       left++;
+//     } else {
+//       right--;
+//     }
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
-console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
-console.log(maxArea([1, 1]));
-console.log(maxArea([2, 3, 4, 5, 18, 17, 6]));
+// console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+// console.log(maxArea([1, 1]));
+// console.log(maxArea([2, 3, 4, 5, 18, 17, 6]));
 
 //Runtime
 // 75 ms
@@ -339,3 +339,26 @@ console.log(maxArea([2, 3, 4, 5, 18, 17, 6]));
 
 // Beats
 // 16.17%
+
+// ------------------------------------------------------------
+
+function countUniqueValues(arr) {
+  let first = 0;
+  let second = 1;
+
+  while (second <= arr.length) {
+    if (arr[first] == arr[second]) {
+      second++;
+    } else {
+      ++first;
+
+      arr[first] = arr[second];
+
+      second++;
+    }
+  }
+
+  return first;
+}
+
+console.log(countUniqueValues([1, 2, 5, 5, 7, 7, 99]));
