@@ -36,34 +36,100 @@
 
 // Refaktored
 
-const same = (arr1, arr2) => {
-  if (arr1.length !== arr2.length) {
+// const same = (arr1, arr2) => {
+//   if (arr1.length !== arr2.length) {
+//     return false;
+//   }
+
+//   let frequencyCounter1 = {};
+//   let frequencyCounter2 = {};
+
+//   for (let val of arr1) {
+//     frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
+//   }
+
+//   for (let val of arr2) {
+//     frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
+//   }
+
+//   for (let key in frequencyCounter1) {
+//     if (!(key ** 2 in frequencyCounter2)) {
+//       return false;
+//     }
+
+//     if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// };
+
+// console.log(same([1, 2, 3], [4, 1, 9]));
+// console.log(same([1, 2, 1], [4, 4, 1]));
+
+// --------------------------------------------------
+
+// Anagrams
+
+// Given two strings, write a function to determine if the second string is an anagram of the first. An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+
+// A Naive Solution
+
+// function validAnagram(s, t) {
+//   if (s.length !== t.length) {
+//     return false;
+//   }
+
+//   let sArr = s.split("");
+//   let tArr = t.split("");
+
+//   for (let i = 0; i < sArr.length; i++) {
+//     if (tArr.indexOf(sArr[i]) >= 0) tArr.splice(tArr.indexOf(sArr[i]), 1);
+//   }
+
+//   return tArr.length == 0;
+// }
+
+// Runtime 2337 ms | Beats 5.3% | Memory 47.5 MB | Beats 37.73%
+
+console.log(validAnagram("", "")); // true
+console.log(validAnagram("aaz", "zza")); // false
+console.log(validAnagram("anagram", "nagaram")); // true
+console.log(validAnagram("rat", "car")); // false)
+console.log(validAnagram("awesome", "awesom")); // false
+console.log(validAnagram("qwerty", "geywrt")); // false
+console.log(validAnagram("texttwisttime", "timetwisttext")); // true
+
+//  Refaktored  Frequency Counter Patterns
+
+function validAnagram(s, t) {
+  if (s.length !== t.length) {
     return false;
   }
 
   let frequencyCounter1 = {};
   let frequencyCounter2 = {};
 
-  for (let val of arr1) {
+  for (let val of s) {
     frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
   }
 
-  for (let val of arr2) {
+  for (let val of t) {
     frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
   }
 
   for (let key in frequencyCounter1) {
-    if (!(key ** 2 in frequencyCounter2)) {
+    if (!(key in frequencyCounter2)) {
       return false;
     }
 
-    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
+    if (frequencyCounter2[key] !== frequencyCounter1[key]) {
       return false;
     }
   }
 
   return true;
-};
+}
 
-console.log(same([1, 2, 3], [4, 1, 9]));
-console.log(same([1, 2, 1], [4, 4, 1]));
+// Runtime 80 ms | Beats 68.77% | Memory | 43.8 MB | Beats | 66.8%
