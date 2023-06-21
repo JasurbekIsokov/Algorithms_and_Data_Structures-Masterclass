@@ -142,23 +142,23 @@
 
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-function twoSum(nums, target) {
-  const frequencyCounter = {};
+// function twoSum(nums, target) {
+//   const frequencyCounter = {};
 
-  for (let i = 0; i < nums.length; i++) {
-    const complement = target - nums[i];
+//   for (let i = 0; i < nums.length; i++) {
+//     const complement = target - nums[i];
 
-    if (frequencyCounter[complement] !== undefined) {
-      return [frequencyCounter[complement], i];
-    }
+//     if (frequencyCounter[complement] !== undefined) {
+//       return [frequencyCounter[complement], i];
+//     }
 
-    frequencyCounter[nums[i]] = i;
-  }
+//     frequencyCounter[nums[i]] = i;
+//   }
 
-  return -1;
-}
+//   return -1;
+// }
 
-console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+// console.log(twoSum([3, 2, 4], 6)); // [1, 2]
 
 // Runtime
 // 68 ms
@@ -171,3 +171,47 @@ console.log(twoSum([3, 2, 4], 6)); // [1, 2]
 
 // Beats
 // 63.44%
+
+// ------------------------------------------------------------
+
+// 349. Intersection of Two Arrays
+// Easy
+// 4.8K
+// 2.1K
+// Companies
+// Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+
+function intersect(nums1, nums2) {
+  const frequencyCounter = {};
+  const result = [];
+
+  for (let num of nums1) {
+    frequencyCounter[num] = (frequencyCounter[num] || 0) + 1;
+  }
+
+  for (let num of nums2) {
+    if (frequencyCounter[num] > 0) {
+      result.push(num);
+
+      frequencyCounter[num]--;
+    }
+  }
+
+  const newSet = new Set(result);
+
+  return [...newSet];
+}
+
+console.log(intersect([1, 2, 2, 1], [2, 2]));
+
+// Runtime
+// 52 ms
+
+// Beats
+// 94.19%
+
+// Memory
+// 44.5 MB
+
+// Beats
+// 12.14%
