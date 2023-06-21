@@ -279,21 +279,63 @@
 
 // Refactores (Multiple Pointers) solution
 
-function sumZero(arr) {
+// function sumZero(arr) {
+//   let left = 0;
+//   let right = arr.length - 1;
+
+//   while (left < right) {
+//     let sum = arr[left] + arr[right];
+
+//     if (sum === 0) {
+//       return [arr[left], arr[right]];
+//     } else if (sum > 0) {
+//       right--;
+//     } else {
+//       left++;
+//     }
+//   }
+// }
+
+// console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
+
+// ------------------------------------------------------------
+
+// 11. Multiple Pointers Container With Most Water
+
+function maxArea(height) {
   let left = 0;
-  let right = arr.length - 1;
+  let right = height.length - 1;
+  let result = 0;
 
   while (left < right) {
-    let sum = arr[left] + arr[right];
+    let sum = Math.min(height[left], height[right]) * (right - left);
 
-    if (sum === 0) {
-      return [arr[left], arr[right]];
-    } else if (sum > 0) {
-      right--;
+    if (result < sum) {
+      result = sum;
+    }
+
+    if (height[left] < height[right]) {
+      left++;
     } else {
-      left--;
+      right--;
     }
   }
+
+  return result;
 }
 
-console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log(maxArea([1, 1]));
+console.log(maxArea([2, 3, 4, 5, 18, 17, 6]));
+
+//Runtime
+// 75 ms
+
+// Beats
+// 70.22%
+
+// Memory
+// 50.2 MB
+
+// Beats
+// 16.17%
