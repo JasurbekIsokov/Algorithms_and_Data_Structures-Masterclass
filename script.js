@@ -93,43 +93,81 @@
 
 // Runtime 2337 ms | Beats 5.3% | Memory 47.5 MB | Beats 37.73%
 
-console.log(validAnagram("", "")); // true
-console.log(validAnagram("aaz", "zza")); // false
-console.log(validAnagram("anagram", "nagaram")); // true
-console.log(validAnagram("rat", "car")); // false)
-console.log(validAnagram("awesome", "awesom")); // false
-console.log(validAnagram("qwerty", "geywrt")); // false
-console.log(validAnagram("texttwisttime", "timetwisttext")); // true
+// console.log(validAnagram("", "")); // true
+// console.log(validAnagram("aaz", "zza")); // false
+// console.log(validAnagram("anagram", "nagaram")); // true
+// console.log(validAnagram("rat", "car")); // false)
+// console.log(validAnagram("awesome", "awesom")); // false
+// console.log(validAnagram("qwerty", "geywrt")); // false
+// console.log(validAnagram("texttwisttime", "timetwisttext")); // true
 
 //  Refaktored  Frequency Counter Patterns
 
-function validAnagram(s, t) {
-  if (s.length !== t.length) {
-    return false;
-  }
+// function validAnagram(s, t) {
+//   if (s.length !== t.length) {
+//     return false;
+//   }
 
-  let frequencyCounter1 = {};
-  let frequencyCounter2 = {};
+//   let frequencyCounter1 = {};
+//   let frequencyCounter2 = {};
 
-  for (let val of s) {
-    frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
-  }
+//   for (let val of s) {
+//     frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
+//   }
 
-  for (let val of t) {
-    frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
-  }
+//   for (let val of t) {
+//     frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
+//   }
 
-  for (let key in frequencyCounter1) {
-    if (!(key in frequencyCounter2)) {
-      return false;
-    }
+//   for (let key in frequencyCounter1) {
+//     if (!(key in frequencyCounter2)) {
+//       return false;
+//     }
 
-    if (frequencyCounter2[key] !== frequencyCounter1[key]) {
-      return false;
-    }
-  }
+//     if (frequencyCounter2[key] !== frequencyCounter1[key]) {
+//       return false;
+//     }
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 // Runtime 80 ms | Beats 68.77% | Memory | 43.8 MB | Beats | 66.8%
+
+// ------------------------------------------------------------
+
+// Two Sum
+
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+function twoSum(nums, target) {
+  const frequencyCounter = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+
+    if (frequencyCounter[complement] !== undefined) {
+      return [frequencyCounter[complement], i];
+    }
+
+    frequencyCounter[nums[i]] = i;
+  }
+
+  return -1;
+}
+
+console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+
+// Runtime
+// 68 ms
+
+// Beats
+// 70.42%
+
+// Memory
+// 42.5 MB
+
+// Beats
+// 63.44%
