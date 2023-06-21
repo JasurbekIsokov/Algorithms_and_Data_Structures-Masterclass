@@ -220,27 +220,27 @@
 
 // 169. Majority Element
 
-const majorityElement = function (nums) {
-  let condidate = 0;
-  let count = 0;
+// const majorityElement = function (nums) {
+//   let condidate = 0;
+//   let count = 0;
 
-  for (let num of nums) {
-    if (count === 0) {
-      condidate = num;
-      count = 1;
-    } else if (condidate === num) {
-      count++;
-    } else {
-      count--;
-    }
+//   for (let num of nums) {
+//     if (count === 0) {
+//       condidate = num;
+//       count = 1;
+//     } else if (condidate === num) {
+//       count++;
+//     } else {
+//       count--;
+//     }
 
-    console.log(count, condidate);
-  }
+//     console.log(count, condidate);
+//   }
 
-  return condidate;
-};
+//   return condidate;
+// };
 
-console.log(majorityElement([2, 2, 1, 1, 1, 2, 2, 3, 4]));
+// console.log(majorityElement([2, 2, 1, 1, 1, 2, 2, 3, 4]));
 
 // Runtime
 // 54 ms
@@ -253,3 +253,47 @@ console.log(majorityElement([2, 2, 1, 1, 1, 2, 2, 3, 4]));
 
 // Beats
 // 34.33%
+
+// ------------------------------------------------------------
+
+// Multiple Pointers
+
+// AN EXAMPLE
+// Write a function called sumZero which accepts a sorted array of integers. The function should find the first pair where the sum is 0. Return an array that includes both values that sum to zero or undefined if a pair does not exist
+
+// sumZero ([-3,-2, -1,0,1,2,3]) // [-3,3] sumZero ([-2,0,1,3]) // undefined sumZero ([1,2,3]) // undefined
+
+// Naive solution
+
+// function sumZero(arr) {
+//   for (i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] + arr[j] === 0) {
+//         return [arr[i], arr[j]];
+//       }
+//     }
+//   }
+// }
+
+// console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
+
+// Refactores (Multiple Pointers) solution
+
+function sumZero(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    let sum = arr[left] + arr[right];
+
+    if (sum === 0) {
+      return [arr[left], arr[right]];
+    } else if (sum > 0) {
+      right--;
+    } else {
+      left--;
+    }
+  }
+}
+
+console.log(sumZero([-3, -2, -1, 0, 1, 2, 3]));
