@@ -181,28 +181,28 @@
 // Companies
 // Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
 
-function intersect(nums1, nums2) {
-  const frequencyCounter = {};
-  const result = [];
+// function intersect(nums1, nums2) {
+//   const frequencyCounter = {};
+//   const result = [];
 
-  for (let num of nums1) {
-    frequencyCounter[num] = (frequencyCounter[num] || 0) + 1;
-  }
+//   for (let num of nums1) {
+//     frequencyCounter[num] = (frequencyCounter[num] || 0) + 1;
+//   }
 
-  for (let num of nums2) {
-    if (frequencyCounter[num] > 0) {
-      result.push(num);
+//   for (let num of nums2) {
+//     if (frequencyCounter[num] > 0) {
+//       result.push(num);
 
-      frequencyCounter[num]--;
-    }
-  }
+//       frequencyCounter[num]--;
+//     }
+//   }
 
-  const newSet = new Set(result);
+//   const newSet = new Set(result);
 
-  return [...newSet];
-}
+//   return [...newSet];
+// }
 
-console.log(intersect([1, 2, 2, 1], [2, 2]));
+// console.log(intersect([1, 2, 2, 1], [2, 2]));
 
 // Runtime
 // 52 ms
@@ -215,3 +215,41 @@ console.log(intersect([1, 2, 2, 1], [2, 2]));
 
 // Beats
 // 12.14%
+
+// ------------------------------------------------------------
+
+// 169. Majority Element
+
+const majorityElement = function (nums) {
+  let condidate = 0;
+  let count = 0;
+
+  for (let num of nums) {
+    if (count === 0) {
+      condidate = num;
+      count = 1;
+    } else if (condidate === num) {
+      count++;
+    } else {
+      count--;
+    }
+
+    console.log(count, condidate);
+  }
+
+  return condidate;
+};
+
+console.log(majorityElement([2, 2, 1, 1, 1, 2, 2, 3, 4]));
+
+// Runtime
+// 54 ms
+
+// Beats
+// 97.12%
+
+// Memory
+// 45.4 MB
+
+// Beats
+// 34.33%
