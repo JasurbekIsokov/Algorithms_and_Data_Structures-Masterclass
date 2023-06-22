@@ -401,26 +401,54 @@
 
 // Sorting algorithms
 
-function bubbleSort(arr) {
-  let swap;
+// Bubble sort
 
-  for (let i = arr.length; i > 0; i--) {
-    swap = false;
-    for (j = 0; j < i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swap = true;
+// function bubbleSort(arr) {
+//   let swap;
+
+//   for (let i = arr.length; i > 0; i--) {
+//     swap = false;
+//     for (j = 0; j < i - 1; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         swap = true;
+//       }
+//     }
+
+//     if (!swap) break;
+//   }
+
+//   return arr;
+// }
+
+// console.log(bubbleSort([1, 2, 4, 3, 7, 6, 8, 90]));
+
+// ===================================================
+
+// ------------------------------------------------------------
+
+// Selection sort
+
+function selectionSort(arr) {
+  let lowest;
+  for (let i = 0; i < arr.length; i++) {
+    lowest = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[lowest]) {
+        lowest = j;
       }
     }
 
-    if (!swap) break;
+    if (lowest !== i) {
+      let temp = arr[i];
+      arr[i] = arr[lowest];
+      arr[lowest] = temp;
+    }
   }
 
   return arr;
 }
 
-console.log(bubbleSort([1, 2, 4, 3, 7, 6, 8, 90]));
-
-// ===================================================
+console.log(selectionSort([1, 2, 4, 3, 7, 6, 8, 90]));
