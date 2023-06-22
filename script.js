@@ -342,23 +342,58 @@
 
 // ------------------------------------------------------------
 
-function countUniqueValues(arr) {
-  let first = 0;
-  let second = 1;
+// function countUniqueValues(arr) {
+//   let first = 0;
+//   let second = 1;
 
-  while (second <= arr.length) {
-    if (arr[first] == arr[second]) {
-      second++;
-    } else {
-      ++first;
+//   while (second <= arr.length) {
+//     if (arr[first] == arr[second]) {
+//       second++;
+//     } else {
+//       ++first;
 
-      arr[first] = arr[second];
+//       arr[first] = arr[second];
 
-      second++;
+//       second++;
+//     }
+//   }
+
+//   return first;
+// }
+
+// console.log(countUniqueValues([1, 2, 5, 5, 7, 7, 99]));
+
+// ------------------------------------------------------------
+
+// ===================================================
+// ===================================================
+
+// # Searching Algorithms
+
+// Binary Search
+
+function binarySearch(arr, num) {
+  let left = 0;
+  let right = arr.length - 1;
+  let middle = Math.floor((left + right) / 2);
+
+  while (left < right && arr[middle] !== num) {
+    if (arr[middle] > num) {
+      right = middle - 1;
+      middle = Math.floor((left + right) / 2);
+    }
+
+    if (arr[middle] < num) {
+      left = middle + 1;
+      middle = Math.floor((left + right) / 2);
     }
   }
 
-  return first;
+  if (arr[middle] === num) {
+    return middle;
+  } else {
+    return -1;
+  }
 }
 
-console.log(countUniqueValues([1, 2, 5, 5, 7, 7, 99]));
+console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8], 4));
