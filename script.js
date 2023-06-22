@@ -431,24 +431,46 @@
 
 // Selection sort
 
-function selectionSort(arr) {
-  let lowest;
-  for (let i = 0; i < arr.length; i++) {
-    lowest = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[lowest]) {
-        lowest = j;
-      }
-    }
+// function selectionSort(arr) {
+//   let lowest;
 
-    if (lowest !== i) {
-      let temp = arr[i];
-      arr[i] = arr[lowest];
-      arr[lowest] = temp;
-    }
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     lowest = i;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[lowest]) {
+//         lowest = j;
+//       }
+//     }
 
-  return arr;
-}
+//     if (lowest !== i) {
+//       let temp = arr[i];
+//       arr[i] = arr[lowest];
+//       arr[lowest] = temp;
+//     }
+//   }
 
-console.log(selectionSort([1, 2, 4, 3, 7, 6, 8, 90]));
+//   return arr;
+// }
+
+// console.log(selectionSort([1, 2, 4, 3, 7, 6, 8, 90]));
+
+// ------------------------------------------------------------
+
+// Insertion  sort
+
+// function insertionSort(arr) {
+//   let currentValue;
+
+//   for (let i = 1; i < arr.length; i++) {
+//     currentValue = arr[i];
+
+//     for (var j = i - 1; j >= 0 && arr[j] > currentValue; j--) {
+//       arr[j + 1] = arr[j];
+//     }
+
+//     arr[j + 1] = currentValue;
+//   }
+//   return arr;
+// }
+
+// console.log(insertionSort([4, 2, 1, 3]));
