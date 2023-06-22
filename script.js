@@ -366,34 +366,61 @@
 // ------------------------------------------------------------
 
 // ===================================================
-// ===================================================
 
 // # Searching Algorithms
 
 // Binary Search
 
-function binarySearch(arr, num) {
-  let left = 0;
-  let right = arr.length - 1;
-  let middle = Math.floor((left + right) / 2);
+// function binarySearch(arr, num) {
+//   let left = 0;
+//   let right = arr.length - 1;
+//   let middle = Math.floor((left + right) / 2);
 
-  while (left < right && arr[middle] !== num) {
-    if (arr[middle] > num) {
-      right = middle - 1;
-      middle = Math.floor((left + right) / 2);
+//   while (left < right && arr[middle] !== num) {
+//     if (arr[middle] > num) {
+//       right = middle - 1;
+//       middle = Math.floor((left + right) / 2);
+//     }
+
+//     if (arr[middle] < num) {
+//       left = middle + 1;
+//       middle = Math.floor((left + right) / 2);
+//     }
+//   }
+
+//   if (arr[middle] === num) {
+//     return middle;
+//   } else {
+//     return -1;
+//   }
+// }
+
+// console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8], 4));
+
+// ------------------------------------------------------------
+
+// Sorting algorithms
+
+function bubbleSort(arr) {
+  let swap;
+
+  for (let i = arr.length; i > 0; i--) {
+    swap = false;
+    for (j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+        swap = true;
+      }
     }
 
-    if (arr[middle] < num) {
-      left = middle + 1;
-      middle = Math.floor((left + right) / 2);
-    }
+    if (!swap) break;
   }
 
-  if (arr[middle] === num) {
-    return middle;
-  } else {
-    return -1;
-  }
+  return arr;
 }
 
-console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8], 4));
+console.log(bubbleSort([1, 2, 4, 3, 7, 6, 8, 90]));
+
+// ===================================================
