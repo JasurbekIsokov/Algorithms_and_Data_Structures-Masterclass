@@ -474,3 +474,32 @@
 // }
 
 // console.log(insertionSort([4, 2, 1, 3]));
+
+// ------------------------------------------------------------
+
+// function bubbleSort(names, heights) {
+//   let swap;
+
+//   for (let i = heights.length; i > 0; i--) {
+//     swap = false;
+//     for (j = 0; j < i - 1; j++) {
+//       if (heights[j] < heights[j + 1]) {
+//         let temp1 = names[j];
+//         names[j] = names[j + 1];
+//         names[j + 1] = temp1;
+
+//         let temp2 = heights[j];
+//         heights[j] = heights[j + 1];
+//         heights[j + 1] = temp2;
+
+//         swap = true;
+//       }
+//     }
+
+//     if (!swap) break;
+//   }
+
+//   return names;
+// }
+
+// console.log(bubbleSort([1, 2, 4, 3, 7, 6, 8, 90]));
