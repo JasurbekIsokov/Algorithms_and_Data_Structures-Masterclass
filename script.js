@@ -512,46 +512,82 @@
 
 // Merging arrays
 
-function mergingArrays(arr1, arr2) {
-  let result = [];
-  let j = 0;
-  let i = 0;
+// function mergingArrays(arr1, arr2) {
+//   let result = [];
+//   let j = 0;
+//   let i = 0;
 
-  while (i < arr1?.length && j < arr2?.length) {
-    if (arr2[j] > arr1[i]) {
-      result.push(arr1[i]);
-      i++;
-    } else {
-      result.push(arr2[j]);
-      j++;
-    }
-  }
+//   while (i < arr1?.length && j < arr2?.length) {
+//     if (arr2[j] > arr1[i]) {
+//       result.push(arr1[i]);
+//       i++;
+//     } else {
+//       result.push(arr2[j]);
+//       j++;
+//     }
+//   }
 
-  while (i < arr1?.length) {
-    result.push(arr1[i]);
-    i++;
-  }
+//   while (i < arr1?.length) {
+//     result.push(arr1[i]);
+//     i++;
+//   }
 
-  while (j < arr2?.length) {
-    result.push(arr2[j]);
-    j++;
-  }
+//   while (j < arr2?.length) {
+//     result.push(arr2[j]);
+//     j++;
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
 // console.log(mergingArrays([100, 200], [1, 2, 3, 5, 6]));
 
-function mergeSort(arr) {
-  if (arr.length <= 1) return arr;
+// function mergeSort(arr) {
+//   if (arr.length <= 1) return arr;
 
-  let middle = Math.floor(arr.length / 2);
+//   let middle = Math.floor(arr.length / 2);
 
-  let left = mergeSort(arr.slice(0, middle));
+//   let left = mergeSort(arr.slice(0, middle));
 
-  let right = mergeSort(arr.slice(middle));
+//   let right = mergeSort(arr.slice(middle));
 
-  return mergingArrays(left, right);
-}
+//   return mergingArrays(left, right);
+// }
 
-console.log(mergeSort([2, 1, 6, 7, 2, 55, 21, 60, 25, 17]));
+// console.log(mergeSort([2, 1, 6, 7, 2, 55, 21, 60, 25, 17]));
+
+// ==============================================================
+
+// ==============================================================
+
+// 125. Valid Palindrome
+// Easy
+// 7.2K
+// 7.3K
+// Companies
+// A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+// Given a string s, return true if it is a palindrome, or false otherwise.
+
+var isPalindrome = function (s) {
+  let left = 0;
+  let right = s.length - 1;
+
+  while (left < right) {
+    if (!/^[a-z0-9]+$/gi.test(s[left])) {
+      left++;
+    } else if (!/^[a-z0-9]+$/gi.test(s[right])) {
+      right--;
+    } else if (s[left].toLowerCase() !== s[right].toLowerCase()) {
+      return false;
+    } else {
+      left++;
+      right--;
+    }
+  }
+
+  return true;
+};
+
+console.log(isPalindrome("A man, a plan, a canal: Panama"));
+
+// s = "A man, a plan, a canal: Panama"
