@@ -568,26 +568,62 @@
 // A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 // Given a string s, return true if it is a palindrome, or false otherwise.
 
-var isPalindrome = function (s) {
-  let left = 0;
-  let right = s.length - 1;
+// var isPalindrome = function (s) {
+//   let left = 0;
+//   let right = s.length - 1;
 
-  while (left < right) {
-    if (!/^[a-z0-9]+$/gi.test(s[left])) {
-      left++;
-    } else if (!/^[a-z0-9]+$/gi.test(s[right])) {
-      right--;
-    } else if (s[left].toLowerCase() !== s[right].toLowerCase()) {
-      return false;
+//   while (left < right) {
+//     if (!/^[a-z0-9]+$/gi.test(s[left])) {
+//       left++;
+//     } else if (!/^[a-z0-9]+$/gi.test(s[right])) {
+//       right--;
+//     } else if (s[left].toLowerCase() !== s[right].toLowerCase()) {
+//       return false;
+//     } else {
+//       left++;
+//       right--;
+//     }
+//   }
+
+//   return true;
+// };
+
+// console.log(isPalindrome("A man, a plan, a canal: Panama"));
+
+// s = "A man, a plan, a canal: Panama"
+
+// ------------------------------------------------------------
+
+// 283. Move Zeroes
+// Easy
+// 14.2K
+// 361
+// Companies
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// Note that you must do this in-place without making a copy of the array.
+
+var moveZeroes = function (nums) {
+  let low = 0;
+  let high = low + 1;
+
+  while (high <= nums.length - 1) {
+    if (nums[low] !== 0) {
+      low++;
+
+      high++;
     } else {
-      left++;
-      right--;
+      if (nums[high] !== 0) {
+        [nums[low], nums[high]] = [nums[high], nums[low]];
+
+        low++;
+      }
+
+      high++;
     }
   }
 
-  return true;
+  return nums;
 };
 
-console.log(isPalindrome("A man, a plan, a canal: Panama"));
-
-// s = "A man, a plan, a canal: Panama"
+console.log(moveZeroes([0, 1, 0, 3, 12]));
