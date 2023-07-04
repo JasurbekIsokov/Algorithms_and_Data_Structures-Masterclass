@@ -603,27 +603,62 @@
 
 // Note that you must do this in-place without making a copy of the array.
 
-var moveZeroes = function (nums) {
-  let low = 0;
-  let high = low + 1;
+// var moveZeroes = function (nums) {
+//   let low = 0;
+//   let high = low + 1;
 
-  while (high <= nums.length - 1) {
-    if (nums[low] !== 0) {
-      low++;
+//   while (high <= nums.length - 1) {
+//     if (nums[low] !== 0) {
+//       low++;
 
-      high++;
+//       high++;
+//     } else {
+//       if (nums[high] !== 0) {
+//         [nums[low], nums[high]] = [nums[high], nums[low]];
+
+//         low++;
+//       }
+
+//       high++;
+//     }
+//   }
+
+//   return nums;
+// };
+
+// console.log(moveZeroes([0, 1, 0, 3, 12]));
+
+// ------------------------------------------------------------
+
+// 121. Best Time to Buy and Sell Stock
+// Easy
+// 26.4K
+// 835
+// Companies
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+var maxProfit = function (prices) {
+  let left = 0;
+  let right = 1;
+  let maxProfit = 0;
+
+  while (right < prices.length) {
+    if (prices[left] < prices[right]) {
+      let profit = prices[right] - prices[left];
+
+      maxProfit = Math.max(maxProfit, profit);
     } else {
-      if (nums[high] !== 0) {
-        [nums[low], nums[high]] = [nums[high], nums[low]];
-
-        low++;
-      }
-
-      high++;
+      left = right;
     }
+
+    right++;
   }
 
-  return nums;
+  return maxProfit;
 };
 
-console.log(moveZeroes([0, 1, 0, 3, 12]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
