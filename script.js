@@ -641,24 +641,70 @@
 
 // Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
-var maxProfit = function (prices) {
-  let left = 0;
-  let right = 1;
-  let maxProfit = 0;
+// var maxProfit = function (prices) {
+//   let left = 0;
+//   let right = 1;
+//   let maxProfit = 0;
 
-  while (right < prices.length) {
-    if (prices[left] < prices[right]) {
-      let profit = prices[right] - prices[left];
+//   while (right < prices.length) {
+//     if (prices[left] < prices[right]) {
+//       let profit = prices[right] - prices[left];
 
-      maxProfit = Math.max(maxProfit, profit);
-    } else {
-      left = right;
-    }
+//       maxProfit = Math.max(maxProfit, profit);
+//     } else {
+//       left = right;
+//     }
 
-    right++;
-  }
+//     right++;
+//   }
 
-  return maxProfit;
-};
+//   return maxProfit;
+// };
 
-console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+// console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+// ------------------------------------------------------------
+
+// Merge Sort Sorting algoritm
+
+// const mergingSort = (arr1, arr2) => {
+//   let result = [];
+//   let i = 0;
+//   let j = 0;
+
+//   while (i < arr1.length && j < arr2.length) {
+//     if (arr1[i] < arr2[j]) {
+//       result.push(arr1[i]);
+//       i++;
+//     } else {
+//       result.push(arr2[j]);
+//       j++;
+//     }
+//   }
+
+//   while (i < arr1.length) {
+//     result.push(arr1[i]);
+//     i++;
+//   }
+
+//   while (j < arr2.length) {
+//     result.push(arr2[j]);
+//     j++;
+//   }
+
+//   return result;
+// };
+
+// const mergeSort = (arr) => {
+//   if (arr.length <= 1) return arr;
+
+//   let midle = Math.floor(arr.length / 2);
+
+//   let left = mergeSort(arr.slice(0, midle));
+
+//   let right = mergeSort(arr.slice(midle));
+
+//   return mergingSort(left, right);
+// };
+
+// console.log(mergeSort([7, 1, 5, 3, 6, 4]));
