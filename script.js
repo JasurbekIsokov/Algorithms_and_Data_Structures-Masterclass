@@ -757,6 +757,7 @@ class SinglyList {
     this.length = 0;
   }
 
+  // oxiridan qo'shish
   push(val) {
     const newNode = new Node(val);
     if (!this.head) {
@@ -771,6 +772,7 @@ class SinglyList {
     return this;
   }
 
+  // oxiridan o'chirish
   pop() {
     if (!this.tail) return undefined;
     var current = this.head;
@@ -792,12 +794,28 @@ class SinglyList {
 
     return current;
   }
+
+  // boshidan o'chirish
+  shift() {
+    if (!this.head) return undefined;
+
+    var current = this.head;
+    this.head = current.next;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current;
+  }
 }
 
 const list = new SinglyList();
 list.push("First Name");
 list.push("Last Name");
 list.push("Full Name");
-list.pop();
+// list.pop();
 
+console.log(list.shift());
 console.log(list);
