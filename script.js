@@ -841,6 +841,17 @@ class SinglyList {
 
     return currentElement;
   }
+
+  // set => elementni o'zgartirish
+  set(value, index) {
+    var getElement = this.get(index);
+
+    if (getElement) {
+      getElement.val = value;
+    }
+
+    return this;
+  }
 }
 
 const list = new SinglyList();
@@ -857,6 +868,8 @@ list.push("Full Name");
 
 // list.unShift("Email");
 
-console.log(list.get(2));
+// console.log(list.get(2));
+
+console.log(list.set("New Value", 2));
 
 console.log(list);
