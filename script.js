@@ -843,7 +843,7 @@ class SinglyList {
   }
 
   // set => elementni o'zgartirish
-  set(value, index) {
+  set(index, value) {
     var getElement = this.get(index);
 
     if (getElement) {
@@ -851,6 +851,37 @@ class SinglyList {
     }
 
     return this;
+  }
+
+  // element qo'shish
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+
+    if (index === this.length) {
+      this.push(value);
+
+      return true;
+    }
+
+    if (index === 0) {
+      this.unShift(value);
+
+      return true;
+    }
+
+    var newNode = new Node(value);
+
+    var element = this.get(index - 1);
+
+    var temp = element.next;
+
+    newNode.next = temp;
+
+    element.next = newNode;
+
+    this.length++;
+
+    return true;
   }
 }
 
@@ -870,6 +901,8 @@ list.push("Full Name");
 
 // console.log(list.get(2));
 
-console.log(list.set("New Value", 2));
+// console.log(list.set(2,"New Value"));
+
+list.insert(2, "Phone Number");
 
 console.log(list);
