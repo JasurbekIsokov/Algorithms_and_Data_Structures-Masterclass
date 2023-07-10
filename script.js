@@ -825,6 +825,22 @@ class SinglyList {
     this.length++;
     return this;
   }
+
+  // get elementning indexi orqali uni olish
+  get(index) {
+    if (index < 0 || this.length <= index) return null;
+
+    var counter = 0;
+    var currentElement = this.head;
+
+    while (counter != index) {
+      counter++;
+
+      currentElement = currentElement.next;
+    }
+
+    return currentElement;
+  }
 }
 
 const list = new SinglyList();
@@ -839,6 +855,8 @@ list.push("Full Name");
 
 // console.log(list.shift());
 
-list.unShift("Email");
+// list.unShift("Email");
+
+console.log(list.get(2));
 
 console.log(list);
