@@ -770,10 +770,34 @@ class SinglyList {
     this.length++;
     return this;
   }
+
+  pop() {
+    if (!this.tail) return undefined;
+    var current = this.head;
+    var newTail = current;
+
+    while (current.next) {
+      newTail = current;
+      current = current.next;
+    }
+
+    this.tail = newTail;
+    this.tail.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return current;
+  }
 }
 
 const list = new SinglyList();
 list.push("First Name");
 list.push("Last Name");
+list.push("Full Name");
+list.pop();
 
 console.log(list);
