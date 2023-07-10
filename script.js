@@ -708,3 +708,72 @@
 // };
 
 // console.log(mergeSort([7, 1, 5, 3, 6, 4]));
+
+// const getDigit = (num, place) => {
+//   return Math.floor(Math.abs(num) / Math.pow(10, place)) % 10;
+// };
+
+// const digitCount = (num) => {
+//   if (num === 0) return 1;
+//   return Math.floor(Math.log10(Math.abs(num))) + 1;
+//   // return toString(num).length;
+// };
+
+// const mostDigits = (arr) => {
+//   let maxDigits = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+//   }
+
+//   return maxDigits;
+// };
+
+// ----------------------------------------
+
+// var smallestEvenMultiple = function (n) {
+//   if (n % 2 == 0) return n;
+//   else return n * 2;
+// };
+
+// ------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------------
+
+// Singly Linked List
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.nextPointer = null;
+  }
+}
+
+class SinglyList {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  push(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
+}
+
+const list = new SinglyList();
+list.push("First Name");
+list.push("Last Name");
+
+console.log(list);
