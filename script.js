@@ -809,13 +809,36 @@ class SinglyList {
 
     return current;
   }
+
+  // boshidan qo'shish
+  unShift(val) {
+    const newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+    return this;
+  }
 }
 
 const list = new SinglyList();
+
 list.push("First Name");
+
 list.push("Last Name");
+
 list.push("Full Name");
+
 // list.pop();
 
-console.log(list.shift());
+// console.log(list.shift());
+
+list.unShift("Email");
+
 console.log(list);
