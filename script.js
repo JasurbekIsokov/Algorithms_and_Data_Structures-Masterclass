@@ -883,6 +883,29 @@ class SinglyList {
 
     return true;
   }
+
+  // element o'chirish
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+
+    if (index == this.length - 1) {
+      return this.pop();
+    }
+
+    if ((index = 0)) {
+      return this.shift();
+    }
+
+    var previousNode = this.get(index - 1);
+
+    var removed = previousNode.next;
+
+    previousNode.next = removed.next;
+
+    this.length--;
+
+    return removed;
+  }
 }
 
 const list = new SinglyList();
@@ -903,6 +926,8 @@ list.push("Full Name");
 
 // console.log(list.set(2,"New Value"));
 
-list.insert(2, "Phone Number");
+// list.insert(2, "Phone Number");
+
+list.remove(2);
 
 console.log(list);
