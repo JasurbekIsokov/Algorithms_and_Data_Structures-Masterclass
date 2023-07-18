@@ -1065,6 +1065,36 @@ class DoublyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+    var removedNode = this.get(index);
+  }
+
+  largest() {
+    let max = this.head.val;
+    let sicl = 0;
+    let index = 0;
+    let current = this.head;
+
+    while (sicl < this.length) {
+      if (current.val > max) {
+        max = current.val;
+        index = sicl;
+      }
+
+      current = current.next;
+
+      sicl++;
+    }
+
+    return {
+      index,
+      max,
+    };
+  }
 }
 
 const list = new DoublyLinkedList();
