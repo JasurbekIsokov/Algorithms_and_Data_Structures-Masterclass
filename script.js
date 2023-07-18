@@ -1010,6 +1010,33 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let middle = Math.floor(this.length / 2);
+
+    var count, current;
+
+    if (index <= middle) {
+      count = 0;
+      current = this.head;
+
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length--;
+      current = this.tail;
+
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
 }
 
 const list = new DoublyLinkedList();
