@@ -995,4 +995,24 @@ class DoublyLinkedList {
     this.length--;
     return poppedNode;
   }
+
+  unshift(value) {
+    let node = new Node(value);
+
+    if (this.length === 0) {
+      this.head = this.tail = node;
+    } else {
+      this.head.prev = node;
+      node.next = this.head;
+      this.head = node;
+    }
+
+    this.length++;
+    return this;
+  }
 }
+
+const list = new DoublyLinkedList();
+list.push("Jasurbek");
+
+console.log(list.unshift("Jafar"));
