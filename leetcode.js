@@ -65,23 +65,71 @@
 // Those numbers for which this process ends in 1 are happy.
 // Return true if n is a happy number, and false if not.
 
-var isHappy = function (n) {
-  function numbersSum(m) {
-    if (m < 10) {
-      return m == 1 || m == 7;
-    }
+// var isHappy = function (n) {
+//   function numbersSum(m) {
+//     if (m < 10) {
+//       return m == 1 || m == 7;
+//     }
 
-    let str = m.toString();
-    let sum = 0;
+//     let str = m.toString();
+//     let sum = 0;
 
-    for (let i = 0; i < str.length; i++) {
-      sum += str[i] ** 2;
-    }
+//     for (let i = 0; i < str.length; i++) {
+//       sum += str[i] ** 2;
+//     }
 
-    return numbersSum(sum);
-  }
+//     return numbersSum(sum);
+//   }
 
-  return numbersSum(n);
+//   return numbersSum(n);
+// };
+
+// console.log(isHappy(19));
+
+// ---------------------------------------------------
+
+// 225. Implement Stack using Queues
+
+var MyStack = function () {
+  this.data = [];
 };
 
-console.log(isHappy(19));
+/**
+ * @param {number} x
+ * @return {void}
+ */
+MyStack.prototype.push = function (x) {
+  this.data.push(x);
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.pop = function () {
+  return this.data.pop();
+};
+
+/**
+ * @return {number}
+ */
+MyStack.prototype.top = function () {
+  return this.data[this.data.length - 1];
+};
+
+/**
+ * @return {boolean}
+ */
+MyStack.prototype.empty = function () {
+  if (this.data.length == 0) {
+    return false;
+  } else return true;
+};
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * var obj = new MyStack()
+ * obj.push(x)
+ * var param_2 = obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.empty()
+ */
