@@ -72,6 +72,20 @@ class Queues {
 
     return record;
   }
+
+  get() {
+    while (this.first.peek()) {
+      this.second.push(this.first.pop());
+    }
+
+    const record = this.second.peek();
+
+    while (this.second.peek()) {
+      this.first.push(this.second.pop());
+    }
+
+    return record;
+  }
 }
 
 const myQueues = new Queues();
@@ -85,3 +99,9 @@ myQueues.enqueue("F");
 myQueues.enqueue("J");
 
 console.log(myQueues);
+
+myQueues.dequeue();
+
+console.log(myQueues);
+
+console.log(myQueues.get());
