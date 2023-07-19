@@ -90,46 +90,76 @@
 
 // 225. Implement Stack using Queues
 
-var MyStack = function () {
-  this.data = [];
+// var MyStack = function () {
+//   this.data = [];
+// };
+
+// /**
+//  * @param {number} x
+//  * @return {void}
+//  */
+// MyStack.prototype.push = function (x) {
+//   this.data.push(x);
+// };
+
+// /**
+//  * @return {number}
+//  */
+// MyStack.prototype.pop = function () {
+//   return this.data.pop();
+// };
+
+// /**
+//  * @return {number}
+//  */
+// MyStack.prototype.top = function () {
+//   return this.data[this.data.length - 1];
+// };
+
+// /**
+//  * @return {boolean}
+//  */
+// MyStack.prototype.empty = function () {
+//   if (this.data.length == 0) {
+//     return false;
+//   } else return true;
+// };
+
+// /**
+//  * Your MyStack object will be instantiated and called as such:
+//  * var obj = new MyStack()
+//  * obj.push(x)
+//  * var param_2 = obj.pop()
+//  * var param_3 = obj.top()
+//  * var param_4 = obj.empty()
+//  */
+
+// ---------------------------------------------------
+
+// 217. Contains Duplicate
+// Easy
+// 9.9K
+// 1.2K
+// Companies
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+var containsDuplicate = function (nums) {
+  let frequencyCounter = {};
+  let result = false;
+  for (const val of nums) {
+    frequencyCounter[val] = (frequencyCounter[val] | 0) + 1;
+  }
+  for (const key in frequencyCounter) {
+    if (frequencyCounter[key] > 1) {
+      result = true;
+    }
+  }
+  return result;
+  // // solution 2
+  // const set = new Set(nums);
+  // if(set.size == nums.length) {
+  //   return false
+  // }else return true;
 };
 
-/**
- * @param {number} x
- * @return {void}
- */
-MyStack.prototype.push = function (x) {
-  this.data.push(x);
-};
-
-/**
- * @return {number}
- */
-MyStack.prototype.pop = function () {
-  return this.data.pop();
-};
-
-/**
- * @return {number}
- */
-MyStack.prototype.top = function () {
-  return this.data[this.data.length - 1];
-};
-
-/**
- * @return {boolean}
- */
-MyStack.prototype.empty = function () {
-  if (this.data.length == 0) {
-    return false;
-  } else return true;
-};
-
-/**
- * Your MyStack object will be instantiated and called as such:
- * var obj = new MyStack()
- * obj.push(x)
- * var param_2 = obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.empty()
- */
+console.log(containsDuplicate([2, 14, 18, 22, 22]));
