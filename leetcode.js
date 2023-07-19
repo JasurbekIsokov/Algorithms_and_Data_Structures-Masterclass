@@ -34,18 +34,54 @@
 
 // You must implement a solution with a linear runtime complexity and use only constant extra space.
 
-var singleNumber = function (nums) {
-  let frequencyCounter = {};
+// var singleNumber = function (nums) {
+//   let frequencyCounter = {};
 
-  for (let val of nums) {
-    frequencyCounter[val] = (frequencyCounter[val] | 0) + 1;
-  }
+//   for (let val of nums) {
+//     frequencyCounter[val] = (frequencyCounter[val] | 0) + 1;
+//   }
 
-  for (const key in frequencyCounter) {
-    if (frequencyCounter[key] == 1) {
-      return key;
+//   for (const key in frequencyCounter) {
+//     if (frequencyCounter[key] == 1) {
+//       return key;
+//     }
+//   }
+// };
+
+// console.log(singleNumber([2, 2, 1, 1, 3]));
+
+// ---------------------------------------------------
+
+// Easy
+// 9.1K
+// 1.2K
+// Companies
+// Write an algorithm to determine if a number n is happy.
+
+// A happy number is a number defined by the following process:
+
+// Starting with any positive integer, replace the number by the sum of the squares of its digits.
+// Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+// Those numbers for which this process ends in 1 are happy.
+// Return true if n is a happy number, and false if not.
+
+var isHappy = function (n) {
+  function numbersSum(m) {
+    if (m < 10) {
+      return m == 1 || m == 7;
     }
+
+    let str = m.toString();
+    let sum = 0;
+
+    for (let i = 0; i < str.length; i++) {
+      sum += str[i] ** 2;
+    }
+
+    return numbersSum(sum);
   }
+
+  return numbersSum(n);
 };
 
-console.log(singleNumber([2, 2, 1, 1, 3]));
+console.log(isHappy(19));
