@@ -219,8 +219,8 @@
 // ---------------------------------------------------
 
 var search = function (arr, num) {
-  let left = arr[0];
-  let right = arr[arr.length - 1];
+  let left = 0;
+  let right = arr.length - 1;
   let middle = Math.floor((left + right) / 2);
 
   while (left < right && arr[middle] !== num) {
