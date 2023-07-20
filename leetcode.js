@@ -143,23 +143,25 @@
 // Companies
 // Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
 
-var containsDuplicate = function (nums) {
-  let frequencyCounter = {};
-  let result = false;
-  for (const val of nums) {
-    frequencyCounter[val] = (frequencyCounter[val] | 0) + 1;
-  }
-  for (const key in frequencyCounter) {
-    if (frequencyCounter[key] > 1) {
-      result = true;
-    }
-  }
-  return result;
-  // // solution 2
-  // const set = new Set(nums);
-  // if(set.size == nums.length) {
-  //   return false
-  // }else return true;
-};
+// var containsDuplicate = function (nums) {
+//   let frequencyCounter = {};
+//   let result = false;
+//   for (const val of nums) {
+//     frequencyCounter[val] = (frequencyCounter[val] | 0) + 1;
+//   }
+//   for (const key in frequencyCounter) {
+//     if (frequencyCounter[key] > 1) {
+//       result = true;
+//     }
+//   }
+//   return result;
+// // solution 2
+// const set = new Set(nums);
+// if(set.size == nums.length) {
+//   return false
+// }else return true;
+// };
 
-console.log(containsDuplicate([2, 14, 18, 22, 22]));
+// console.log(containsDuplicate([2, 14, 18, 22, 22]));
+
+// ---------------------------------------------------
