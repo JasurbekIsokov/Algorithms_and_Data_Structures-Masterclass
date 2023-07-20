@@ -168,50 +168,76 @@
 
 // 654. Maximum Binary Tree
 
-let maxArrayNum = (nums) => {
-  let maxNum = nums[0];
+// let maxArrayNum = (nums) => {
+//   let maxNum = nums[0];
 
-  for (let i = 0; i < nums.length; i++) {
-    if (maxNum < nums[i]) {
-      maxNum = nums[i];
-    }
-  }
+//   for (let i = 0; i < nums.length; i++) {
+//     if (maxNum < nums[i]) {
+//       maxNum = nums[i];
+//     }
+//   }
 
-  return max;
-};
+//   return max;
+// };
 
-var constructMaximumBinaryTree = function (nums) {
-  function recursive(arr) {
-    if (arr.length == 0) {
-      return undefined;
-    }
+// var constructMaximumBinaryTree = function (nums) {
+//   function recursive(arr) {
+//     if (arr.length == 0) {
+//       return undefined;
+//     }
 
-    if (arr.length == 1) {
-      return new TreeNode(arr[0]);
-    }
+//     if (arr.length == 1) {
+//       return new TreeNode(arr[0]);
+//     }
 
-    let maxNum = arr[0];
+//     let maxNum = arr[0];
 
-    for (let i = 0; i < arr.length; i++) {
-      if (maxNum < arr[i]) {
-        maxNum = arr[i];
-      }
-    }
+//     for (let i = 0; i < arr.length; i++) {
+//       if (maxNum < arr[i]) {
+//         maxNum = arr[i];
+//       }
+//     }
 
-    let left = arr.slice(0, arr.indexOf(maxNum));
+//     let left = arr.slice(0, arr.indexOf(maxNum));
 
-    let right = arr.slice(arr.indexOf(maxNum) + 1);
+//     let right = arr.slice(arr.indexOf(maxNum) + 1);
 
-    let leftNote = recursive(left);
+//     let leftNote = recursive(left);
 
-    let rightNote = recursive(right);
+//     let rightNote = recursive(right);
 
-    let root = new TreeNode(maxNum, leftNote, rightNote);
+//     let root = new TreeNode(maxNum, leftNote, rightNote);
 
-    return root;
-  }
+//     return root;
+//   }
 
-  return recursive(nums);
-};
+//   return recursive(nums);
+// };
 
 // [3,2,1,6,0,5]
+
+// ---------------------------------------------------
+
+var search = function (arr, num) {
+  let left = arr[0];
+  let right = arr[arr.length - 1];
+  let middle = Math.floor((left + right) / 2);
+
+  while (left < right && arr[middle] !== num) {
+    if (arr[middle] > num) {
+      right = middle - 1;
+      middle = Math.floor((left + right) / 2);
+    }
+
+    if (arr[middle] < num) {
+      left = middle + 1;
+      middle = Math.floor((left + right) / 2);
+    }
+  }
+
+  if (arr[middle] == num) {
+    return middle;
+  } else {
+    return -1;
+  }
+};
