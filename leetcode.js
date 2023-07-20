@@ -165,3 +165,53 @@
 // console.log(containsDuplicate([2, 14, 18, 22, 22]));
 
 // ---------------------------------------------------
+
+// 654. Maximum Binary Tree
+
+let maxArrayNum = (nums) => {
+  let maxNum = nums[0];
+
+  for (let i = 0; i < nums.length; i++) {
+    if (maxNum < nums[i]) {
+      maxNum = nums[i];
+    }
+  }
+
+  return max;
+};
+
+var constructMaximumBinaryTree = function (nums) {
+  function recursive(arr) {
+    if (arr.length == 0) {
+      return undefined;
+    }
+
+    if (arr.length == 1) {
+      return new TreeNode(arr[0]);
+    }
+
+    let maxNum = arr[0];
+
+    for (let i = 0; i < arr.length; i++) {
+      if (maxNum < arr[i]) {
+        maxNum = arr[i];
+      }
+    }
+
+    let left = arr.slice(0, arr.indexOf(maxNum));
+
+    let right = arr.slice(arr.indexOf(maxNum) + 1);
+
+    let leftNote = recursive(left);
+
+    let rightNote = recursive(right);
+
+    let root = new TreeNode(maxNum, leftNote, rightNote);
+
+    return root;
+  }
+
+  return recursive(nums);
+};
+
+// [3,2,1,6,0,5]
