@@ -218,26 +218,48 @@
 
 // ---------------------------------------------------
 
-var search = function (arr, num) {
-  let left = 0;
-  let right = arr.length - 1;
-  let middle = Math.floor((left + right) / 2);
+// var search = function (arr, num) {
+//   let left = 0;
+//   let right = arr.length - 1;
+//   let middle = Math.floor((left + right) / 2);
 
-  while (left < right && arr[middle] !== num) {
-    if (arr[middle] > num) {
-      right = middle - 1;
-      middle = Math.floor((left + right) / 2);
-    }
+//   while (left < right && arr[middle] !== num) {
+//     if (arr[middle] > num) {
+//       right = middle - 1;
+//       middle = Math.floor((left + right) / 2);
+//     }
 
-    if (arr[middle] < num) {
-      left = middle + 1;
-      middle = Math.floor((left + right) / 2);
-    }
-  }
+//     if (arr[middle] < num) {
+//       left = middle + 1;
+//       middle = Math.floor((left + right) / 2);
+//     }
+//   }
 
-  if (arr[middle] == num) {
-    return middle;
+//   if (arr[middle] == num) {
+//     return middle;
+//   } else {
+//     return -1;
+//   }
+// };
+
+// ---------------------------------------------------
+
+function decimalToBinary(decimalNum) {
+  if (decimalNum === 0) {
+    return "0"; // 0 soni uchun ikkilik sanoq sistemasida "0" qaytariladi
+  } else if (decimalNum === 1) {
+    return "1"; // 1 soni uchun ikkilik sanoq sistemasida "1" qaytariladi
   } else {
-    return -1;
+    const remainder = decimalNum % 2; // ikkilik sanoq sistemasidagi oxirgi raqamni hisoblash
+    const remainingPart = Math.floor(decimalNum / 2); // qoldiqni olish uchun butun qismni hisoblash
+    return decimalToBinary(remainingPart) + remainder.toString(); // qoldiqni ikkilik sanoq sistemasiga o'tkazish
   }
-};
+}
+
+console.log(decimalToBinary(22));
+
+function binaryGap(val) {
+  
+}
+
+binaryGap("10110");
