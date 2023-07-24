@@ -107,6 +107,22 @@ class BinarySearchTree {
 
     return data;
   }
+
+  DFSPostOrder() {
+    let data = [];
+
+    function recursuveHelper(node) {
+      if (node.left) recursuveHelper(node.left);
+
+      if (node.right) recursuveHelper(node.right);
+
+      data.push(node.value);
+    }
+
+    recursuveHelper(this.root);
+
+    return data;
+  }
 }
 
 const myTree = new BinarySearchTree();
@@ -121,3 +137,5 @@ myTree.insert(20);
 console.log(myTree.BFS());
 
 console.log(myTree.DFSPreOrder());
+
+console.log(myTree.DFSInOrder());
