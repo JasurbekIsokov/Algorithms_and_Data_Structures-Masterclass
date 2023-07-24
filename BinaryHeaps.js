@@ -36,6 +36,69 @@ class BinaryHeaps {
   }
 
   // [41, 39, 55, 27, 12, 33, 18];
+
+  extraMax() {
+    let max = this.value[0];
+
+    let end = this.value.pop();
+
+    if (this.value.length > 0) {
+      this.value[0] = end;
+
+      this.sinkDown();
+    }
+
+    return max;
+  }
+
+  // [41, 39, 55, 27, 12, 33, 18];
+  // [18, 39, 55, 27, 12, 33];
+  // [55, 39, 18, 27, 12, 33]; // 6
+  // [55, 39, 33, 27, 12, 18]; // 6
+
+  sinkDown() {
+    let idx = 0;
+
+    let element = this.value[0];
+
+    let length = this.value.length;
+
+    while (true) {
+      let leftChildIdx = 2 * idx + 1; // 5
+      let rightChildIdx = 2 * idx + 2; // 6
+
+      let leftChild, rightChild;
+
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.value[leftChildIdx]; // 33
+
+        if (leftChild > element) {
+          swap = leftChildIdx; // 5
+        }
+      }
+
+      if (rightChildIdx < length) {
+        rightChild = this.value[rightChildIdx];
+
+        if (
+          (swap === null && rightChild > element) ||
+          (swap !== null && rightChild > leftChild)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+
+      if (swap === null) break;
+
+      this.value[idx] = this.value[swap];
+
+      this.value[swap] = element;
+
+      idx = swap; // 5
+    }
+  }
 }
 
 const MyBinaryHeaps = new BinaryHeaps();
@@ -53,5 +116,9 @@ MyBinaryHeaps.insert(50);
 MyBinaryHeaps.insert(55);
 
 console.log(MyBinaryHeaps);
+
+MyBinaryHeaps.extraMax();
+
+console.log(MyBinaryHeaps.extraMax());
 
 console.log(MyBinaryHeaps);
