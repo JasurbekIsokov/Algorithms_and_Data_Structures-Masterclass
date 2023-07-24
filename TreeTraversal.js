@@ -48,23 +48,45 @@ class BinarySearchTree {
 
   // Breadth First Search Solution
 
-  BFS() {
-    let node = this.root;
+  // BFS() {
+  //   let node = this.root;
 
+  //   let data = [];
+
+  //   let queue = [];
+
+  //   queue.push(node);
+
+  //   while (queue.length) {
+  //     node = queue.shift();
+
+  //     data.push(node.value);
+
+  //     if (node.left) queue.push(node.left);
+
+  //     if (node.right) queue.push(node.right);
+  //   }
+
+  //   return data;
+  // }
+
+  BFS() {
     let data = [];
 
     let queue = [];
 
-    queue.push(node);
+    let current = this.root;
+
+    queue.push(current);
 
     while (queue.length) {
-      node = queue.shift();
+      current = queue.shift();
 
-      data.push(node.value);
+      data.push(current.value);
 
-      if (node.left) queue.push(node.left);
+      if (current.left) queue.push(current.left);
 
-      if (node.right) queue.push(node.right);
+      if (current.right) queue.push(current.right);
     }
 
     return data;
@@ -74,7 +96,10 @@ class BinarySearchTree {
 const myTree = new BinarySearchTree();
 
 myTree.insert(10);
-myTree.insert(11);
-myTree.insert(9);
+myTree.insert(6);
+myTree.insert(3);
+myTree.insert(8);
+myTree.insert(15);
+myTree.insert(20);
 
 console.log(myTree.BFS());
