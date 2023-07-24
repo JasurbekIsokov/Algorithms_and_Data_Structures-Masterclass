@@ -91,6 +91,22 @@ class BinarySearchTree {
 
     return data;
   }
+
+  DFSPreOrder() {
+    let data = [];
+
+    function recursuveHelper(node) {
+      data.push(node.value);
+
+      if (node.left) recursuveHelper(node.left);
+
+      if (node.right) recursuveHelper(node.right);
+    }
+
+    recursuveHelper(this.root);
+
+    return data;
+  }
 }
 
 const myTree = new BinarySearchTree();
@@ -103,3 +119,5 @@ myTree.insert(15);
 myTree.insert(20);
 
 console.log(myTree.BFS());
+
+console.log(myTree.DFSPreOrder());
