@@ -24,6 +24,18 @@ class HashTable {
 
     return this.values;
   }
+
+  get(key) {
+    let index = this._hash(key);
+    if (this.values[index]) {
+      for (let i = 0; i < this.values[index].length; i++) {
+        if (this.values[index][i][0] === key) {
+          return this.values[index][i][1];
+        }
+      }
+    }
+    return undefined;
+  }
 }
 
 const hashTable = new HashTable(20);
@@ -34,3 +46,5 @@ hashTable.set("h3", "18.72px");
 hashTable.set("h4", "16px");
 
 console.log(hashTable);
+
+console.log(hashTable.get("h4"));
