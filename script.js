@@ -1106,27 +1106,29 @@
 
 // 2283. Check if Number Has Equal Digit Count and Digit Value
 
-var digitCount = function (num) {
-  let result = true;
+// var digitCount = function (num) {
+//   let result = true;
 
-  let frequensyCounter = {};
+//   let frequensyCounter = {};
 
-  let arr = num.split("");
+//   let arr = num.split("");
 
-  for (let val of arr) {
-    frequensyCounter[val] = (frequensyCounter[val] || 0) + 1;
-  }
+//   for (let val of arr) {
+//     frequensyCounter[val] = (frequensyCounter[val] || 0) + 1;
+//   }
 
-  for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i], frequensyCounter[i]);
-    if (arr[i] == (frequensyCounter[i] ? frequensyCounter[i] : 0)) {
-      result = result && true;
-    } else {
-      result = result && false;
-    }
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i], frequensyCounter[i]);
+//     if (arr[i] == (frequensyCounter[i] ? frequensyCounter[i] : 0)) {
+//       result = result && true;
+//     } else {
+//       result = result && false;
+//     }
+//   }
 
-  return result;
-};
+//   return result;
+// };
 
-console.log(digitCount("1210"));
+// console.log(digitCount("1210"));
+
+// ------------------------------------------------------------------------------------------------------------------------
