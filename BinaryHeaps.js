@@ -103,19 +103,19 @@ class BinaryHeaps {
 
 const MyBinaryHeaps = new BinaryHeaps();
 
-console.log(MyBinaryHeaps);
+// console.log(MyBinaryHeaps);
 
-MyBinaryHeaps.insert(55);
-MyBinaryHeaps.insert(18);
-MyBinaryHeaps.insert(41);
-MyBinaryHeaps.insert(5);
-MyBinaryHeaps.insert(6);
-MyBinaryHeaps.insert(1);
-MyBinaryHeaps.insert(9);
-MyBinaryHeaps.insert(50);
-MyBinaryHeaps.insert(55);
+// MyBinaryHeaps.insert(55);
+// MyBinaryHeaps.insert(18);
+// MyBinaryHeaps.insert(41);
+// MyBinaryHeaps.insert(5);
+// MyBinaryHeaps.insert(6);
+// MyBinaryHeaps.insert(1);
+// MyBinaryHeaps.insert(9);
+// MyBinaryHeaps.insert(50);
+// MyBinaryHeaps.insert(55);
 
-console.log(MyBinaryHeaps);
+// console.log(MyBinaryHeaps);
 
 // MyBinaryHeaps.extraMax();
 
@@ -123,10 +123,10 @@ console.log(MyBinaryHeaps);
 
 // console.log(MyBinaryHeaps);
 
-// ------------------
+// -----------------------------------------------------
 
 class Node {
-  constructor(value, priority) {
+  constructor(priority, value) {
     this.value = value;
     this.priority = priority;
   }
@@ -134,79 +134,80 @@ class Node {
 
 class PriorityQueue {
   constructor() {
-    this.values = [];
+    this.value = []; //
   }
 
-  enqueue(value, priority) {
-    let newNode = new Node(value, priority);
+  enqueue(priority, value) {
+    let newNode = new Node(priority, value);
 
-    this.values.push(newNode);
+    this.value.push(newNode);
 
     this.bubbleUp();
   }
 
   bubbleUp() {
-    let idx = this.values.length - 1;
-    const element = this.values[idx];
+    let idx = this.value.length - 1;
+
+    let element = this.value[idx];
 
     while (idx > 0) {
-      let parentIdx = Math.floor((idx - 1) / 2);
+      let parentIdx = Math.floor((idx - 1) / 2); // 2
 
-      let parent = this.values[parentIdx];
+      let parent = this.value[parentIdx]; // 18
 
       if (element.priority > parent.priority) break;
 
-      this.values[parentIdx] = element;
+      this.value[parentIdx] = element;
 
-      this.values[idx] = parent;
+      this.value[idx] = parent;
 
       idx = parentIdx;
     }
   }
 
   dequeue() {
-    let max = this.values[0];
+    let min = this.value[0];
 
-    const end = this.values.pop();
+    let end = this.value.pop();
 
-    if (this.values.length > 0) {
-      this.values[0] = end;
+    if (this.value.length > 0) {
+      this.value[0] = end;
+
       this.sinkDown();
     }
 
-    return max;
+    return min;
   }
 
   sinkDown() {
     let idx = 0;
 
-    const element = this.values[idx];
+    let element = this.value[0];
 
-    const length = this.values.length;
+    let length = this.value.length;
 
     while (true) {
-      let leftChildIdx = 2 * idx + 1;
-
-      let rightChildIdx = 2 * idx + 2;
+      let leftChildIdx = 2 * idx + 1; // 5
+      let rightChildIdx = 2 * idx + 2; // 6
 
       let leftChild, rightChild;
 
       let swap = null;
 
       if (leftChildIdx < length) {
-        leftChild = this.values[leftChildIdx];
+        leftChild = this.value[leftChildIdx]; // 33
 
-        if (leftChild.priority > element.priority) {
-          swap = leftChildIdx;
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIdx; // 5
         }
       }
 
-      if (ReportingObserver < length) {
-        leftChild = this.values[leftChildIdx];
+      if (rightChildIdx < length) {
+        rightChild = this.value[rightChildIdx];
 
         if (
-          (swap === null && rightChild.priority > element.priority) ||
-          (swap !== null && rightChild.priority > leftChild.priority)
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
         ) {
           swap = rightChildIdx;
         }
@@ -214,21 +215,27 @@ class PriorityQueue {
 
       if (swap === null) break;
 
-      this.values[idx] = this.values[swap];
+      this.value[idx] = this.value[swap];
 
-      this.values[swap] = element;
+      this.value[swap] = element;
 
       idx = swap;
     }
   }
 }
 
-const priorityQueue = new PriorityQueue();
+let maxPriority = new PriorityQueue();
 
-priorityQueue.enqueue("h1", 1);
-priorityQueue.enqueue("h2", 2);
-priorityQueue.enqueue("h4", 4);
-priorityQueue.enqueue("h3", 3);
-priorityQueue.enqueue("h5", 5);
+maxPriority.enqueue(16, "h4");
+maxPriority.enqueue(32, "h1");
+maxPriority.enqueue(18.72, "h3");
+maxPriority.enqueue(24, "h2");
+maxPriority.enqueue(8, "llll");
 
-console.log(priorityQueue);
+console.log(maxPriority);
+
+console.log(maxPriority.dequeue());
+// console.log(maxPriority.dequeue());
+// console.log(maxPriority.dequeue());
+
+// console.log(maxPriority);
