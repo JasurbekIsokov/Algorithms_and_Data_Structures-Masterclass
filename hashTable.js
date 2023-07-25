@@ -13,6 +13,24 @@ class HashTable {
     }
     return total;
   }
+
+  set(key, value) {
+    let index = this._hash(key);
+
+    if (!this.values[index]) {
+      this.values[index] = [];
+    }
+    this.values[index].push([key, value]);
+
+    return this.values;
+  }
 }
 
 const hashTable = new HashTable(20);
+
+hashTable.set("h1", "32px");
+hashTable.set("h2", "24px");
+hashTable.set("h3", "18.72px");
+hashTable.set("h4", "16px");
+
+console.log(hashTable);
