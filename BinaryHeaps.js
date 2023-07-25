@@ -235,7 +235,7 @@ maxPriority.enqueue(8, "llll");
 console.log(maxPriority);
 
 console.log(maxPriority.dequeue());
-// console.log(maxPriority.dequeue());
-// console.log(maxPriority.dequeue());
+console.log(maxPriority.dequeue());
+console.log(maxPriority.dequeue());
 
-// console.log(maxPriority);
+console.log(maxPriority);

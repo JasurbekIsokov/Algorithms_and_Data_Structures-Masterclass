@@ -1103,3 +1103,30 @@
 // console.log(list.unshift("Jafar"));
 
 // ------------------------------------------------------------------------------------------------------------------------
+
+// 2283. Check if Number Has Equal Digit Count and Digit Value
+
+var digitCount = function (num) {
+  let result = true;
+
+  let frequensyCounter = {};
+
+  let arr = num.split("");
+
+  for (let val of arr) {
+    frequensyCounter[val] = (frequensyCounter[val] || 0) + 1;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i], frequensyCounter[i]);
+    if (arr[i] == (frequensyCounter[i] ? frequensyCounter[i] : 0)) {
+      result = result && true;
+    } else {
+      result = result && false;
+    }
+  }
+
+  return result;
+};
+
+console.log(digitCount("1210"));
