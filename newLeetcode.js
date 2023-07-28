@@ -81,3 +81,27 @@
 // };
 
 // ---------------------------------------------------------------------
+
+// var splitWordsBySeparator = function (words, separator) {
+//   console.log(words.join(separator).split(separator).filter(Boolean));
+// };
+
+// splitWordsBySeparator(["$easy$", "$problem$"], "$");
+
+// ---------------------------------------------------------------------
+
+// var lengthOfLastWord = function (s) {
+//   let arr = s.split(" ").filter(Boolean);
+
+//   return arr[arr.length - 1].length;
+// };
+
+// lengthOfLastWord("   fly me   to   the moon  ");
+
+// ---------------------------------------------------------------------
+
+var plusOne = function (digits) {
+  console.log((BigInt(digits.join("")) + 1n).toString().split(""));
+};
+
+plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]);
