@@ -1253,3 +1253,22 @@
 // g.addEdge("D", "E");
 // g.addEdge("D", "F");
 // g.addEdge("E", "F");
+
+//-------------------------------------------------------------
+
+// 9. Palindrome Number
+// Easy
+// 10.4K
+// 2.6K
+// Companies
+// Given an integer x, return true if x is a
+// palindrome
+// , and false otherwise.
+
+var isPalindrome = function (x) {
+  let rev = x.toString();
+
+  console.log(rev);
+};
+
+console.log(isPalindrome(121));
