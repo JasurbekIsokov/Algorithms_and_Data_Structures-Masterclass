@@ -244,22 +244,22 @@
 
 // ---------------------------------------------------
 
-function decimalToBinary(decimalNum) {
-  if (decimalNum === 0) {
-    return "0"; // 0 soni uchun ikkilik sanoq sistemasida "0" qaytariladi
-  } else if (decimalNum === 1) {
-    return "1"; // 1 soni uchun ikkilik sanoq sistemasida "1" qaytariladi
-  } else {
-    const remainder = decimalNum % 2; // ikkilik sanoq sistemasidagi oxirgi raqamni hisoblash
-    const remainingPart = Math.floor(decimalNum / 2); // qoldiqni olish uchun butun qismni hisoblash
-    return decimalToBinary(remainingPart) + remainder.toString(); // qoldiqni ikkilik sanoq sistemasiga o'tkazish
-  }
-}
+// function decimalToBinary(decimalNum) {
+//   if (decimalNum === 0) {
+//     return "0"; // 0 soni uchun ikkilik sanoq sistemasida "0" qaytariladi
+//   } else if (decimalNum === 1) {
+//     return "1"; // 1 soni uchun ikkilik sanoq sistemasida "1" qaytariladi
+//   } else {
+//     const remainder = decimalNum % 2; // ikkilik sanoq sistemasidagi oxirgi raqamni hisoblash
+//     const remainingPart = Math.floor(decimalNum / 2); // qoldiqni olish uchun butun qismni hisoblash
+//     return decimalToBinary(remainingPart) + remainder.toString(); // qoldiqni ikkilik sanoq sistemasiga o'tkazish
+//   }
+// }
 
-console.log(decimalToBinary(22));
+// console.log(decimalToBinary(22));
 
-function binaryGap(val) {
-  
-}
+// function binaryGap(val) {
 
-binaryGap("10110");
+// }
+
+// binaryGap("10110");
