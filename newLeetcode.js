@@ -35,8 +35,48 @@
 // ---------------------------------------------------------------------
 // 9. Palindrome Number
 
-var isPalindrome = function (x) {
-  return `${x}` == `${x}`.split("").reverse().join("");
-};
+// var isPalindrome = function (x) {
+//   return `${x}` == `${x}`.split("").reverse().join("");
+// };
 
-console.log(isPalindrome(121));
+// console.log(isPalindrome(121));
+
+// ---------------------------------------------------------------------
+
+// var searchInsert = function (nums, target) {
+//   let left = 0;
+//   let right = nums.length - 1;
+//   let middle = Math.floor((left + right) / 2);
+
+//   if (target <= nums[left]) return 0;
+
+//   if (target == nums[right]) return right;
+
+//   if (target > nums[right]) return right + 1;
+
+//   while (left + 1 !== right) {
+//     if (target < nums[middle]) {
+//       right = middle;
+//       middle = Math.floor((left + right) / 2);
+//     }
+
+//     if (target > nums[middle]) {
+//       left = middle;
+//       middle = Math.floor((left + right) / 2);
+//     }
+
+//     if (target === nums[middle]) {
+//       return middle;
+//     }
+//   }
+
+//   return right;
+// };
+
+// console.log(searchInsert([1, 3, 5, 6], 5));
+
+// var searchInsert = function (nums, target) {
+//   return right;
+// };
+
+// ---------------------------------------------------------------------
