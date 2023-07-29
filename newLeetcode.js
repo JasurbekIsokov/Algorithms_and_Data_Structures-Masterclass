@@ -99,9 +99,23 @@
 // lengthOfLastWord("   fly me   to   the moon  ");
 
 // ---------------------------------------------------------------------
+// 69. Sqrt(x)
 
-var plusOne = function (digits) {
-  console.log((BigInt(digits.join("")) + 1n).toString().split(""));
+var mySqrt = function (x) {
+  let left = 0;
+  let right = x;
+
+  while (left <= right) {
+    const middle = Math.floor((left + right) / 2);
+
+    if (middle * middle <= x && (middle + 1) * (middle + 1) > x) {
+      return middle;
+    } else if (middle * middle < x) {
+      left = middle + 1;
+    } else {
+      right = middle - 1;
+    }
+  }
 };
 
-plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]);
+console.log(mySqrt(9));
