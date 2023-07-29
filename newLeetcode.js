@@ -101,21 +101,66 @@
 // ---------------------------------------------------------------------
 // 69. Sqrt(x)
 
-var mySqrt = function (x) {
-  let left = 0;
-  let right = x;
+// var mySqrt = function (x) {
+//   let left = 0;
+//   let right = x;
 
-  while (left <= right) {
-    const middle = Math.floor((left + right) / 2);
+//   while (left <= right) {
+//     const middle = Math.floor((left + right) / 2);
 
-    if (middle * middle <= x && (middle + 1) * (middle + 1) > x) {
-      return middle;
-    } else if (middle * middle < x) {
-      left = middle + 1;
-    } else {
-      right = middle - 1;
-    }
-  }
+//     if (middle * middle <= x && (middle + 1) * (middle + 1) > x) {
+//       return middle;
+//     } else if (middle * middle < x) {
+//       left = middle + 1;
+//     } else {
+//       right = middle - 1;
+//     }
+//   }
+// };
+
+// console.log(mySqrt(9));
+
+// ---------------------------------------------------------------------
+// /242. Valid Anagram
+
+// var isAnagram = function (s, t) {
+// if (s.length !== t.length) {
+//   return false;
+// }
+
+// let frequencyCounter1 = {},
+//   frequencyCounter2 = {};
+
+// for (let val of s) {
+//   frequencyCounter1[val] = (frequencyCounter1[val] | 0) + 1;
+// }
+
+// for (let val of t) {
+//   frequencyCounter2[val] = (frequencyCounter2[val] | 0) + 1;
+// }
+
+// for (const key in frequencyCounter1) {
+//   if (!(key in frequencyCounter2)) {
+//     return false;
+//   }
+
+//   if (frequencyCounter1[key] !== frequencyCounter2[key]) {
+//     return false;
+//   }
+// }
+
+// return true;
+// };
+
+// console.log(isAnagram("anagram", "nagaram"));
+
+// ---------------------------------------------------------------------
+
+// 28. Find the Index of the First Occurrence in a String
+//
+
+var strStr = function (haystack, needle) {
+  return haystack.indexOf(needle);
 };
 
-console.log(mySqrt(9));
+console.log(strStr("sadbutsad", "sad"));
